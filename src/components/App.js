@@ -32,7 +32,13 @@ class App extends React.Component {
     }
     return (
       <div id="app-container" style={containerStyle}>
-        <Card gradientCSS={gradientCSS} />
+        <div className="app-inner">
+          <Card gradientCSS={gradientCSS} />
+          <p className="credits">
+            Created by <a href="https://willwull.github.io" title="My website">
+            willwull <i className="fal fa-external-link"></i></a>
+          </p>
+        </div>
       </div>
     );
   }
