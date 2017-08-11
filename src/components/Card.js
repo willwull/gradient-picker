@@ -37,7 +37,7 @@ class Card extends React.Component {
               <i className="fal fa-exchange"></i>
             </button>
           </div>
-          <ColorBox label="From" color={this.props.colors.to} />
+          <ColorBox label="To" color={this.props.colors.to} />
         </div>
       </div>
     )
