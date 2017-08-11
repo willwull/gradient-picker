@@ -18,7 +18,20 @@ class App extends React.Component {
       },
     }
 
+    this.flipColors = this.flipColors.bind(this);
     this.getGradientCSS = this.getGradientCSS.bind(this);
+    this.getTextColor = this.getTextColor.bind(this);
+  }
+
+  flipColors() {
+    const fromColor = this.state.colors.from;
+    const toColor = this.state.colors.to;
+    this.setState({
+      colors: {
+        from: toColor,
+        to: fromColor,
+      }
+    })
   }
 
   getGradientCSS() {
@@ -47,7 +60,11 @@ class App extends React.Component {
     return (
       <div id="app-container" style={containerStyle}>
         <div className="app-inner">
-          <Card gradientCSS={gradientCSS} colors={this.state.colors} />
+          <Card
+            gradientCSS={gradientCSS}
+            colors={this.state.colors}
+            flipColors={this.flipColors}
+          />
           <p className="credits">
             Created by <a href="https://willwull.github.io" title="My website">
             willwull <i className="fal fa-external-link"></i></a>
