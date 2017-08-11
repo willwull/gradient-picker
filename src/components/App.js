@@ -1,4 +1,5 @@
 import React from "react";
+import Color from "color";
 import Card from "./Card";
 import "../stylesheets/App.css";
 
@@ -6,11 +7,14 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    const fromColor = new Color("#FF9A9E");
+    const toColor = new Color("#FAD0C4");
+
     this.state = {
       angle: 90,
       colors: {
-        from: "#FF9A9E",
-        to: "#FAD0C4",
+        from: fromColor,
+        to: toColor,
       },
     }
 
@@ -25,10 +29,20 @@ class App extends React.Component {
     return css;
   }
 
+  getTextColor() {
+    const from = this.state.colors.from;
+    const to = this.state.colors.to;
+    const middle = from.mix(to);
+    const textColor = middle.luminosity() < 0.5 ? "black" : "white";
+    return textColor;
+  }
+
   render() {
     const gradientCSS = this.getGradientCSS()
+    const textColor = this.getTextColor();
     const containerStyle = {
       background: gradientCSS,
+      color: textColor,
     }
     return (
       <div id="app-container" style={containerStyle}>

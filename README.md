@@ -1,2 +1,2 @@
-# gradients
-A straight forward gradient generator
+# gradient-picker
+A straight forward gradient generator.
