@@ -1,4 +1,7 @@
+@import "shared";
+
 #app-container {
+  @include center-children;
   height: 100%;
   width: 100%;
 }
