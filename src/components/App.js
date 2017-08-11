@@ -33,7 +33,7 @@ class App extends React.Component {
     const from = this.state.colors.from;
     const to = this.state.colors.to;
     const middle = from.mix(to);
-    const textColor = middle.luminosity() < 0.5 ? "black" : "white";
+    const textColor = middle.luminosity() < 0.5 ? "#454545" : "white";
     return textColor;
   }
 
@@ -47,7 +47,7 @@ class App extends React.Component {
     return (
       <div id="app-container" style={containerStyle}>
         <div className="app-inner">
-          <Card gradientCSS={gradientCSS} />
+          <Card gradientCSS={gradientCSS} colors={this.state.colors} />
           <p className="credits">
             Created by <a href="https://willwull.github.io" title="My website">
             willwull <i className="fal fa-external-link"></i></a>

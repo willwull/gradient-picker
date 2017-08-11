@@ -1,0 +1,13 @@
+@import "shared";
+
+.color-box-container {
+  text-align: center;
+}
+
+.color-box {
+  --size: 100px;
+  width: var(--size);
+  height: var(--size);
+  margin: 10px auto;
+  border-radius: 15px;
+}

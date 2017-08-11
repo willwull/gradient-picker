@@ -1,4 +1,7 @@
+@import "shared";
+
 #card-container {
+  color: #454545;
   background-color: white;
   width: 450px;
   border-radius: 40px;
@@ -11,5 +14,15 @@
   height: var(--size);
   width: var(--size);
   border-radius: 100%;
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
+}
+
+.card-colors {
+  display: grid;
+  grid-template-columns: 5fr 1fr 5fr;
+}
+
+.flip-container {
+  @include center-children;
+  font-size: 30px;
 }
