@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "clipboard": "^1.7.1",
     "color": "^2.0.0",
     "node-sass-chokidar": "0.0.3",
     "normalize.css": "^7.0.0",

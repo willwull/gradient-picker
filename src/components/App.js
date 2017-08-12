@@ -62,6 +62,7 @@ class App extends React.Component {
         <div className="app-inner">
           <Card
             gradientCSS={gradientCSS}
+            textColor={textColor}
             colors={this.state.colors}
             flipColors={this.flipColors}
           />

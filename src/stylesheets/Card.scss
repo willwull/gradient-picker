@@ -10,11 +10,21 @@
 }
 
 .card-circle {
+  @include center-children;
   --size: 280px;
   height: var(--size);
   width: var(--size);
   border-radius: 100%;
-  margin: 0 auto 20px auto;
+  margin: 10px auto 10px auto;
+}
+
+.copy-btn {
+  @include remove-btn-default;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  margin: 0 20px 0 auto;
 }
 
 .card-colors {
@@ -28,10 +38,7 @@
 }
 
 .flip-btn {
-  background: none;
-  border: none;
-  outline: none;
-  padding: 0;
+  @include remove-btn-default;
   cursor: pointer;
   transform: rotateY(0);
   transition: all 300ms;
