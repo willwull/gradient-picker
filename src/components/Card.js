@@ -1,5 +1,5 @@
 import React from "react";
-import Clipboard from "clipboard";
+import CopyBtn from "./CopyBtn";
 import ColorBox from "./ColorBox";
 import "../stylesheets/Card.css";
 
@@ -17,8 +17,6 @@ class Card extends React.Component {
 
     this.state = { flipped: false };
 
-    new Clipboard(".copy-btn");
-
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -26,10 +24,6 @@ class Card extends React.Component {
     e.preventDefault();
     this.props.flipColors();
     this.setState({ flipped: !this.state.flipped });
-  }
-
-  getCopyText() {
-    return `background: ${this.props.gradientCSS};`;
   }
 
   render() {
@@ -40,9 +34,7 @@ class Card extends React.Component {
     const btnClass = this.state.flipped ? "flip-btn" : "flip-btn flipped";
     return (
       <div id="card-container">
-        <button className="copy-btn" data-clipboard-text={this.getCopyText()}>
-          <i className="fal fa-copy"></i> Copy CSS
-        </button>
+        <CopyBtn gradientCSS={this.props.gradientCSS} />
         <div className="card-circle" style={circleStyle}></div>
         <div className="card-colors">
           <ColorBox label="From" color={this.props.colors.from} />

@@ -1,0 +1,10 @@
+@import "shared";
+
+.copy-btn {
+  @include remove-btn-default;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  margin: 0 20px 0 auto;
+}
