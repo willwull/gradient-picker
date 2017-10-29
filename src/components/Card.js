@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import Color from "color";
 import CopyBtn from "./CopyBtn";
 import ColorBox from "./ColorBox";
 import "../stylesheets/Card.css";
@@ -35,19 +37,29 @@ class Card extends React.Component {
     return (
       <div id="card-container">
         <CopyBtn gradientCSS={this.props.gradientCSS} />
-        <div className="card-circle" style={circleStyle}></div>
+        <div className="card-circle" style={circleStyle} />
         <div className="card-colors">
           <ColorBox label="From" color={this.props.colors.from} />
           <div className="flip-container">
             <button className={btnClass} onClick={this.handleClick}>
-              <i className="fal fa-exchange"></i>
+              <i className="fal fa-exchange" />
             </button>
           </div>
           <ColorBox label="To" color={this.props.colors.to} />
         </div>
       </div>
-    )
+    );
   }
 }
+
+Card.propTypes = {
+  gradientCSS: PropTypes.string.isRequired,
+  textColor: PropTypes.instanceOf(Color).isRequired,
+  colors: PropTypes.shape({
+    from: PropTypes.instanceOf(Color).isRequired,
+    to: PropTypes.instanceOf(Color).isRequired,
+  }).isRequired,
+  flipColors: PropTypes.func.isRequired,
+};
 
 export default Card;

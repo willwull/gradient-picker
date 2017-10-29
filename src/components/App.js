@@ -16,22 +16,11 @@ class App extends React.Component {
         from: fromColor,
         to: toColor,
       },
-    }
+    };
 
     this.flipColors = this.flipColors.bind(this);
     this.getGradientCSS = this.getGradientCSS.bind(this);
     this.getTextColor = this.getTextColor.bind(this);
-  }
-
-  flipColors() {
-    const fromColor = this.state.colors.from;
-    const toColor = this.state.colors.to;
-    this.setState({
-      colors: {
-        from: toColor,
-        to: fromColor,
-      }
-    })
   }
 
   getGradientCSS() {
@@ -47,16 +36,27 @@ class App extends React.Component {
     const to = this.state.colors.to;
     const middle = from.mix(to);
     const textColor = middle.luminosity() < 0.5 ? "#454545" : "white";
-    return textColor;
+    return new Color(textColor);
+  }
+
+  flipColors() {
+    const fromColor = this.state.colors.from;
+    const toColor = this.state.colors.to;
+    this.setState({
+      colors: {
+        from: toColor,
+        to: fromColor,
+      },
+    });
   }
 
   render() {
-    const gradientCSS = this.getGradientCSS()
+    const gradientCSS = this.getGradientCSS();
     const textColor = this.getTextColor();
     const containerStyle = {
       background: gradientCSS,
       color: textColor,
-    }
+    };
     return (
       <div id="app-container" style={containerStyle}>
         <div className="app-inner">
@@ -67,8 +67,10 @@ class App extends React.Component {
             flipColors={this.flipColors}
           />
           <p className="credits">
-            Created by <a href="https://willwull.github.io" title="My website">
-            willwull <i className="fal fa-external-link"></i></a>
+            Created by
+            <a href="https://willwull.github.io" title="My website">
+            willwull <i className="fal fa-external-link" />
+            </a>
           </p>
         </div>
       </div>
