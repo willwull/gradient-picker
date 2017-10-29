@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Clipboard from "clipboard";
 import "../stylesheets/CopyBtn.css";
 
@@ -11,7 +12,7 @@ class CopyBtn extends React.Component {
   constructor(props) {
     super(props);
     this.state = { copied: false };
-    new Clipboard(".copy-btn");
+    this.clip = new Clipboard(".copy-btn");
     this.handleClick = this.handleClick.bind(this);
     this.handleMouseOut = this.handleMouseOut.bind(this);
   }
@@ -31,14 +32,22 @@ class CopyBtn extends React.Component {
   render() {
     const btnClass = this.state.copied ? "copy-btn anim" : "copy-btn";
     const copyText = this.state.copied ? "Copied!" : "Copy CSS";
-    return(
-      <button className={btnClass} data-clipboard-text={this.getCopyText()}
-        onClick={this.handleClick} onMouseOut={this.handleMouseOut}
+    return (
+      <button
+        className={btnClass}
+        data-clipboard-text={this.getCopyText()}
+        onClick={this.handleClick}
+        onMouseOut={this.handleMouseOut}
+        onBlur={this.handleMouseOut}
       >
-        <i className="fal fa-copy"></i> {copyText}
+        <i className="fal fa-copy" /> {copyText}
       </button>
-    )
+    );
   }
 }
+
+CopyBtn.propTypes = {
+  gradientCSS: PropTypes.string.isRequired,
+};
 
 export default CopyBtn;
