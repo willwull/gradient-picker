@@ -32,7 +32,9 @@ class AngleSlider extends React.Component {
       color: this.props.textColor,
     };
     return (
-      <div id="card-circle" style={circleStyle} />
+      <div id="card-circle" style={circleStyle}>
+        <div>&nbsp;{this.props.angle}&deg;</div>
+      </div>
     );
   }
 }
