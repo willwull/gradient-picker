@@ -1,0 +1,41 @@
+@import "shared";
+
+#card-circle {
+  position: relative;
+  border-radius: 100%;
+
+  @include center-children;
+  --size: 280px;
+  height: var(--size);
+  width: var(--size);
+  border-radius: 100%;
+  margin: 10px auto 5px auto;
+
+  font-size: 50px;
+
+  .cs-handle-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+  }
+
+  .cs-handle {
+    position: absolute;
+    transform: translateY(-50%);
+
+    height: 30px;
+    width: 30px;
+    right: -15px;
+    cursor: default;
+    border-radius: 100%;
+    background: linear-gradient(180deg, #FFFFFF, #efefef);
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 10px 0;
+  }
+
+  .cs-handle:active {
+    background: linear-gradient(180deg, #EBEBEB, #DFDFDF)
+  }
+}

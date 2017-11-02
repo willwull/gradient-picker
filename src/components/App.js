@@ -18,9 +18,14 @@ class App extends React.Component {
       },
     };
 
+    this.setAngle = this.setAngle.bind(this);
     this.flipColors = this.flipColors.bind(this);
     this.getGradientCSS = this.getGradientCSS.bind(this);
     this.getTextColor = this.getTextColor.bind(this);
+  }
+
+  setAngle(angle) {
+    this.setState({ angle });
   }
 
   getGradientCSS() {
@@ -61,15 +66,17 @@ class App extends React.Component {
       <div id="app-container" style={containerStyle}>
         <div className="app-inner">
           <Card
+            angle={this.state.angle}
             gradientCSS={gradientCSS}
             textColor={textColor}
             colors={this.state.colors}
             flipColors={this.flipColors}
+            setAngle={this.setAngle}
           />
           <p className="credits">
-            Created by
+            Created by&nbsp;
             <a href="https://willwull.github.io" title="My website">
-            willwull <i className="fal fa-external-link" />
+              willwull <i className="fal fa-external-link" />
             </a>
           </p>
         </div>

@@ -4,13 +4,14 @@
   "private": true,
   "homepage": "https://willwull.github.io/gradient-picker",
   "dependencies": {
+    "circle-slider": "^3.0.2",
     "clipboard": "^1.7.1",
     "color": "^2.0.0",
     "node-sass-chokidar": "0.0.3",
     "normalize.css": "^7.0.0",
+    "prop-types": "^15.6.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "prop-types": "^15.6.0"
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "eslint": "^4.10.0",

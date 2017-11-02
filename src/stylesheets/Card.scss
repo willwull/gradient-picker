@@ -9,15 +9,6 @@
   padding: 50px;
 }
 
-.card-circle {
-  @include center-children;
-  --size: 280px;
-  height: var(--size);
-  width: var(--size);
-  border-radius: 100%;
-  margin: 10px auto 5px auto;
-}
-
 .card-colors {
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
