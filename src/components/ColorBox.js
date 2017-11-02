@@ -6,8 +6,9 @@ import "../stylesheets/ColorBox.css";
 /**
  * ColorBox
  *
- * @prop {String} label The name of this box
- * @prop {Color} color  The color for this box
+ * @prop {String} label      The name of this box
+ * @prop {Color} color       The color for this box
+ * @prop {Function} onClick  What happens when clicking on the color box
  */
 function ColorBox(props) {
   const boxStyle = {
@@ -16,7 +17,7 @@ function ColorBox(props) {
   return (
     <div className="color-box-container">
       <div className="label">{props.label}</div>
-      <div className="color-box" style={boxStyle} />
+      <button className="color-box" style={boxStyle} onClick={props.onClick} />
       <div className="color-value">{props.color.hex()}</div>
     </div>
   );
@@ -25,6 +26,7 @@ function ColorBox(props) {
 ColorBox.propTypes = {
   label: PropTypes.string.isRequired,
   color: PropTypes.instanceOf(Color).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ColorBox;

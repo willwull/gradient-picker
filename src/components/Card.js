@@ -20,21 +20,35 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { flipped: false };
+    this.state = {
+      colorFlipped: false,
+      cardFlipped: false,
+    };
+
+    this.cardFlipTime = 500;
+    this.cardIsFlipping = false;
 
     this.handleClick = this.handleClick.bind(this);
+    this.flipCard = this.flipCard.bind(this);
   }
 
   handleClick(e) {
     e.preventDefault();
     this.props.flipColors();
-    this.setState({ flipped: !this.state.flipped });
+    this.setState({ colorFlipped: !this.state.colorFlipped });
+  }
+
+  flipCard(e) {
+    e.preventDefault();
+    this.setState({ cardFlipped: !this.state.cardFlipped });
+    console.log(this.state.cardFlipped);
   }
 
   render() {
-    const btnClass = this.state.flipped ? "flip-btn" : "flip-btn flipped";
+    const btnClass = this.state.colorFlipped ? "flip-btn" : "flip-btn flipped";
+    const cardClass = this.state.cardFlipped ? "card-flipped" : "";
     return (
-      <div id="card-container">
+      <div id="card-container" className={cardClass}>
         <CopyBtn gradientCSS={this.props.gradientCSS} />
         <AngleSlider
           angle={this.props.angle}
@@ -43,13 +57,21 @@ class Card extends React.Component {
           setAngle={this.props.setAngle}
         />
         <div className="card-colors">
-          <ColorBox label="From" color={this.props.colors.from} />
+          <ColorBox
+            label="From"
+            color={this.props.colors.from}
+            onClick={this.flipCard}
+          />
           <div className="flip-container">
             <button className={btnClass} onClick={this.handleClick}>
               <i className="fal fa-exchange" />
             </button>
           </div>
-          <ColorBox label="To" color={this.props.colors.to} />
+          <ColorBox
+            label="To"
+            color={this.props.colors.to}
+            onClick={this.flipCard}
+          />
         </div>
       </div>
     );
