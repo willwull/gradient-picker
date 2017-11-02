@@ -75,7 +75,7 @@ class App extends React.Component {
           />
           <p className="credits">
             Created by&nbsp;
-            <a href="https://willwull.github.io" title="My website">
+            <a href="https://github.com/willwull/gradient-picker" title="My website">
               willwull <i className="fal fa-external-link" />
             </a>
           </p>
