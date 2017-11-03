@@ -25,7 +25,7 @@ class Card extends React.Component {
     this.state = {
       colorFlipped: false,
       cardFlipped: false,
-      whichColor: "",
+      colorToEdit: "",
     };
 
     this.cardFlipTime = 500;
@@ -34,17 +34,27 @@ class Card extends React.Component {
     this.setFrom = this.setFrom.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.flipCard = this.flipCard.bind(this);
+    this.editColor = this.editColor.bind(this);
   }
 
   setFrom(color) {
     const newColors = this.props.colors;
-    newColors.from = new Color(color.hex);
+    if (this.state.colorToEdit === "from") {
+      newColors.from = new Color(color.hex);
+    } else if (this.state.colorToEdit === "to") {
+      newColors.to = new Color(color.hex);
+    }
 
     this.props.setColors(newColors);
   }
 
   flipCard() {
     this.setState({ cardFlipped: !this.state.cardFlipped });
+  }
+
+  editColor(colorToEdit) {
+    this.setState({ colorToEdit });
+    this.flipCard();
   }
 
   handleClick(e) {
@@ -71,7 +81,7 @@ class Card extends React.Component {
               <ColorBox
                 label="From"
                 color={this.props.colors.from}
-                onClick={this.flipCard}
+                onClick={() => this.editColor("from")}
               />
               <div className="flip-container">
                 <button className={btnClass} onClick={this.handleClick}>
@@ -81,7 +91,7 @@ class Card extends React.Component {
               <ColorBox
                 label="To"
                 color={this.props.colors.to}
-                onClick={this.flipCard}
+                onClick={() => this.editColor("to")}
               />
             </div>
           </div>
