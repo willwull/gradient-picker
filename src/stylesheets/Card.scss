@@ -1,7 +1,11 @@
 @import "shared";
 
+:root {
+  --card-padding: 50px;
+}
+
 @mixin card-face {
-  padding: 50px;
+  padding: var(--card-padding);
   backface-visibility: hidden;
   border-radius: 40px;
   box-shadow: 0px 2px 25px 0px rgba(0,0,0,0.35);
@@ -11,10 +15,15 @@
 #card-container {
   color: #454545;
   width: 450px;
+  perspective: 1000;
+
+  button {
+    cursor: pointer;
+  }
 }
 
 .card {
-  transition: 300ms all;
+  transition: 500ms all;
   transform-style: preserve-3d;
 }
 
@@ -34,6 +43,20 @@
   left: 0px;
   right: 0px;
   transform: rotateY(180deg);
+
+    .done-btn {
+      outline: none;
+      font-size: 18px;
+      position: absolute;
+      color: #108af5;
+      border: none;
+      background: none;
+      right: var(--card-padding);
+
+      &:active {
+        color: #7bc1ff;
+      }
+    }
 }
 
 .card-colors {
@@ -44,6 +67,7 @@
 .flip-container {
   @include center-children;
   font-size: 30px;
+  perspective: initial;
 }
 
 .flip-btn {

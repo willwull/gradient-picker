@@ -45,7 +45,7 @@ class Card extends React.Component {
   }
 
   render() {
-    const btnClass = this.state.colorFlipped ? "flip-btn" : "flip-btn flipped";
+    const btnClass = this.state.colorFlipped ? "flip-btn flipped" : "flip-btn";
     const cardClass = this.state.cardFlipped ? "card flipped" : "card";
     return (
       <div id="card-container">
@@ -76,7 +76,13 @@ class Card extends React.Component {
               />
             </div>
           </div>
-          <div className="card-back" onClick={this.flipCard}>
+          <div className="card-back">
+            <button
+              className="done-btn"
+              onClick={this.flipCard}
+            >
+              Done
+            </button>
             Yo. Boom. Gah.
           </div>
         </div>

@@ -14,10 +14,13 @@ function ColorBox(props) {
   const boxStyle = {
     backgroundColor: props.color,
   };
+  const colorClass = props.color.luminosity() < 0.5 ? "color-box dark-text" : "color-box white-text";
   return (
     <div className="color-box-container">
       <div className="label">{props.label}</div>
-      <button className="color-box" style={boxStyle} onClick={props.onClick} />
+      <button className={colorClass} style={boxStyle} onClick={props.onClick}>
+        <i className="fal fa-pencil-alt" />
+      </button>
       <div className="color-value">{props.color.hex()}</div>
     </div>
   );
