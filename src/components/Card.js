@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Color from "color";
-import { SwatchesPicker } from "react-color";
 import CopyBtn from "./CopyBtn";
 import ColorBox from "./ColorBox";
 import AngleSlider from "./AngleSlider";
+import ColorPicker from "./ColorPicker";
 import "../stylesheets/Card.css";
 
 /**
@@ -31,13 +31,13 @@ class Card extends React.Component {
     this.cardFlipTime = 500;
     this.cardIsFlipping = false;
 
-    this.setFrom = this.setFrom.bind(this);
+    this.setColor = this.setColor.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.flipCard = this.flipCard.bind(this);
     this.editColor = this.editColor.bind(this);
   }
 
-  setFrom(color) {
+  setColor(color) {
     const newColors = this.props.colors;
     if (this.state.colorToEdit === "from") {
       newColors.from = new Color(color.hex);
@@ -66,6 +66,13 @@ class Card extends React.Component {
   render() {
     const btnClass = this.state.colorFlipped ? "flip-btn flipped" : "flip-btn";
     const cardClass = this.state.cardFlipped ? "card flipped" : "card";
+    const pickerColor = this.state.colorToEdit === "from" ?
+      this.props.colors.from :
+      this.props.colors.to;
+    const gradPrevStyle = {
+      background: this.props.gradientCSS,
+    };
+
     return (
       <div id="card-container">
         <div className={cardClass}>
@@ -103,8 +110,10 @@ class Card extends React.Component {
               Done
             </button>
             <h2>Edit color</h2>
-            <SwatchesPicker
-              onChange={this.setFrom}
+            <div className="gradient-preview" style={gradPrevStyle} />
+            <ColorPicker
+              color={pickerColor.hex()}
+              onChange={this.setColor}
             />
           </div>
         </div>
