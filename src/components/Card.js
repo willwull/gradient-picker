@@ -46,32 +46,39 @@ class Card extends React.Component {
 
   render() {
     const btnClass = this.state.colorFlipped ? "flip-btn" : "flip-btn flipped";
-    const cardClass = this.state.cardFlipped ? "card-flipped" : "";
+    const cardClass = this.state.cardFlipped ? "card flipped" : "card";
     return (
-      <div id="card-container" className={cardClass}>
-        <CopyBtn gradientCSS={this.props.gradientCSS} />
-        <AngleSlider
-          angle={this.props.angle}
-          gradientCSS={this.props.gradientCSS}
-          textColor={this.props.textColor}
-          setAngle={this.props.setAngle}
-        />
-        <div className="card-colors">
-          <ColorBox
-            label="From"
-            color={this.props.colors.from}
-            onClick={this.flipCard}
-          />
-          <div className="flip-container">
-            <button className={btnClass} onClick={this.handleClick}>
-              <i className="fal fa-exchange" />
-            </button>
+      <div id="card-container">
+        <div className={cardClass}>
+          <div className="card-front">
+            <CopyBtn gradientCSS={this.props.gradientCSS} />
+            <AngleSlider
+              angle={this.props.angle}
+              gradientCSS={this.props.gradientCSS}
+              textColor={this.props.textColor}
+              setAngle={this.props.setAngle}
+            />
+            <div className="card-colors">
+              <ColorBox
+                label="From"
+                color={this.props.colors.from}
+                onClick={this.flipCard}
+              />
+              <div className="flip-container">
+                <button className={btnClass} onClick={this.handleClick}>
+                  <i className="fal fa-exchange" />
+                </button>
+              </div>
+              <ColorBox
+                label="To"
+                color={this.props.colors.to}
+                onClick={this.flipCard}
+              />
+            </div>
           </div>
-          <ColorBox
-            label="To"
-            color={this.props.colors.to}
-            onClick={this.flipCard}
-          />
+          <div className="card-back" onClick={this.flipCard}>
+            Yo. Boom. Gah.
+          </div>
         </div>
       </div>
     );
