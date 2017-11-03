@@ -18,10 +18,16 @@ class App extends React.Component {
       },
     };
 
+    this.setColors = this.setColors.bind(this);
     this.setAngle = this.setAngle.bind(this);
     this.flipColors = this.flipColors.bind(this);
     this.getGradientCSS = this.getGradientCSS.bind(this);
     this.getTextColor = this.getTextColor.bind(this);
+  }
+
+  setColors(newColors) {
+    console.log(newColors);
+    this.setState({ colors: newColors });
   }
 
   setAngle(angle) {
@@ -72,6 +78,7 @@ class App extends React.Component {
             colors={this.state.colors}
             flipColors={this.flipColors}
             setAngle={this.setAngle}
+            setColors={this.setColors}
           />
           <p className="credits">
             Created by&nbsp;
