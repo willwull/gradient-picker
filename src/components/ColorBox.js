@@ -19,7 +19,7 @@ function ColorBox(props) {
     <div className="color-box-container">
       <div className="label">{props.label}</div>
       <button className={colorClass} style={boxStyle} onClick={props.onClick}>
-        <i className="fal fa-pencil-alt" />
+        <i className="fal fa-pencil" />
       </button>
       <div className="color-value">{props.color.hex()}</div>
     </div>

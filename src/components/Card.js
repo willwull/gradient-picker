@@ -83,7 +83,7 @@ class Card extends React.Component {
             >
               Done
             </button>
-            Yo. Boom. Gah.
+            <h2>Edit color</h2>
           </div>
         </div>
       </div>
