@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Color from "color";
+import { SwatchesPicker } from "react-color";
 import CopyBtn from "./CopyBtn";
 import ColorBox from "./ColorBox";
 import AngleSlider from "./AngleSlider";
@@ -15,6 +16,7 @@ import "../stylesheets/Card.css";
  * @prop {Object} colors       An object containing "from" and "to" colors
  * @prop {Function} flipColors A function to flip to and from colors
  * @prop {Function} setAngle   A function to set the angle of the gradient
+ * @prop {Function} setColors  A function to set the colors of the gradient
  */
 class Card extends React.Component {
   constructor(props) {
@@ -23,25 +25,32 @@ class Card extends React.Component {
     this.state = {
       colorFlipped: false,
       cardFlipped: false,
+      whichColor: "",
     };
 
     this.cardFlipTime = 500;
     this.cardIsFlipping = false;
 
+    this.setFrom = this.setFrom.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.flipCard = this.flipCard.bind(this);
+  }
+
+  setFrom(color) {
+    const newColors = this.props.colors;
+    newColors.from = new Color(color.hex);
+
+    this.props.setColors(newColors);
+  }
+
+  flipCard() {
+    this.setState({ cardFlipped: !this.state.cardFlipped });
   }
 
   handleClick(e) {
     e.preventDefault();
     this.props.flipColors();
     this.setState({ colorFlipped: !this.state.colorFlipped });
-  }
-
-  flipCard(e) {
-    e.preventDefault();
-    this.setState({ cardFlipped: !this.state.cardFlipped });
-    console.log(this.state.cardFlipped);
   }
 
   render() {
@@ -84,6 +93,9 @@ class Card extends React.Component {
               Done
             </button>
             <h2>Edit color</h2>
+            <SwatchesPicker
+              onChange={this.setFrom}
+            />
           </div>
         </div>
       </div>
@@ -101,6 +113,7 @@ Card.propTypes = {
   }).isRequired,
   flipColors: PropTypes.func.isRequired,
   setAngle: PropTypes.func.isRequired,
+  setColors: PropTypes.func.isRequired,
 };
 
 export default Card;
