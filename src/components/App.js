@@ -45,7 +45,7 @@ class App extends React.Component {
     const from = this.state.colors.from;
     const to = this.state.colors.to;
     const middle = from.mix(to);
-    const textColor = middle.luminosity() < 0.5 ? "#454545" : "white";
+    const textColor = middle.luminosity() > 0.7 ? "#454545" : "white";
     return new Color(textColor);
   }
 
