@@ -26,7 +26,6 @@ class App extends React.Component {
   }
 
   setColors(newColors) {
-    console.log(newColors);
     this.setState({ colors: newColors });
   }
 
