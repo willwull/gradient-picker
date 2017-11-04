@@ -2,6 +2,7 @@ import React from "react";
 import Color from "color";
 import Card from "./Card";
 import "../stylesheets/App.css";
+import "../stylesheets/Responsive.css";
 
 class App extends React.Component {
   constructor(props) {

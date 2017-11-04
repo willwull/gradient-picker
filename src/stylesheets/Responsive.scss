@@ -1,0 +1,41 @@
+@media (max-width: 575px) {
+  :root {
+    --card-padding: 35px;
+  }
+
+  #card-container {
+    padding-top: 20px;
+    width: 300px;
+  }
+
+  #card-circle {
+    margin-top: 20px;
+    --size: 200px;
+  }
+
+  .color-box {
+    --size: 70px;
+  }
+
+  .colorpicker {
+    .saturation {
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --card-padding: 30px;
+  }
+
+  #card-container {
+    padding-top: 20px;
+    width: 280px;
+  }
+
+  #card-circle {
+    margin-top: 20px;
+    --size: 180px;
+  }
+}
