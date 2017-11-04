@@ -14,7 +14,7 @@ function ColorBox(props) {
   const boxStyle = {
     backgroundColor: props.color,
   };
-  const colorClass = props.color.luminosity() < 0.5 ? "color-box dark-text" : "color-box white-text";
+  const colorClass = props.color.luminosity() > 0.7 ? "color-box dark-text" : "color-box white-text";
   return (
     <div className="color-box-container">
       <div className="label">{props.label}</div>
